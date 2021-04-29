@@ -1,0 +1,20 @@
+{
+    "ReceiverLands": [
+        {
+            "Key": "CMR",
+            "Description": "Cameroun",
+            "Port": "Port authority Douala",
+            "Flag": "xcdf",
+            "AlternativCity": [
+                {
+                    "Key": "YDE",
+                    "AltDescription": "Yaounde"
+                },
+                {
+                    "Key": "BFSSAM",
+                    "AltDescription": "Bafoussam"
+                }
+            ]
+        }
+    ]
+}

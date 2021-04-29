@@ -1,0 +1,199 @@
+{
+    "TransportRoutes": [
+        {
+            "main": {
+                "Key": "GER-CMR",
+                "Description": "Germany - Cameroon",
+                "NextShipingDate": "2022.03.15",
+                "EstimatedArrivalDate": "20.03.2022"
+            },
+            "receiverland": {
+                "Key": "CMR",
+                "Description": "Cameroun",
+                "Port": "Port authority Douala",
+                "Flag": "xcdf"
+            },
+            "AlternativCity": [
+                {
+                    "Key": "YDE",
+                    "AltDescription": "Yaounde"
+                },
+                {
+                    "Key": "BFSSAM",
+                    "AltDescription": "Bafoussam"
+                }
+            ],
+            "SenderLands": {
+                "Key": "GER",
+                "Description": "Germany",
+                "Flag": "xcdf",
+                "FlexPickUp": "false",
+                "Pickupoption": [
+                    {
+                        "key": "Flex",
+                        "description": "flexible",
+                        "text": "abbdfdhhhhhhhhhhhhhhhhhhdhdhd"
+                    },
+                    {
+                        "key": "Self",
+                        "description": "Self",
+                        "text": "yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyhd"
+                    }
+                ],
+                "PickUpRepresentations": [
+                    {
+                        "RepresentationName": "Shop Port Gentil",
+                        "Representant": "Polo",
+                        "RepresentationTyp": "Shop",
+                        "City": "Bordeaux",
+                        "StreetName": "les Chatreaux 33 ",
+                        "StreetNumber": "30",
+                        "Co": "derriere les chanps",
+                        "opentime": "Mon-Fri: 8-10h Sunday 08-10h",
+                        "Contact": "01762563636566",
+                        "maxstorage": "30"
+                    },
+                    {
+                        "RepresentationName": "Shop Port Gentil",
+                        "Representant": "Marco",
+                        "RepresentationTyp": "Filliale",
+                        "City": "Bordeaux",
+                        "StreetName": "les Chatreaux 33 ",
+                        "StreetNumber": "30",
+                        "Co": "derriere les chanps",
+                        "opentime": "Mon-Fri: 8-10h Sunday 08-10h",
+                        "Contact": "01762563636566",
+                        "maxstorage": "30"
+                    }
+                ]
+            },
+            "consignmentype": [
+                {
+                    "key": "CAT",
+                    "description": "Carton",
+                    "consignmentsize": [
+                        {
+                            "Key": "Size S",
+                            "Description": "Max. 120 x 60 x 60 - 5 Kg",
+                            "FlexPickUp": "false",
+                            "Buyable": "false"
+                        },
+                        {
+                            "Key": "Size M",
+                            "Description": "Max. 120 x 60 x 60 - 10 Kg",
+                            "FlexPickUp": "false",
+                            "Buyable": "false"
+                        },
+                        {
+                            "Key": "Size L",
+                            "Description": "Max. 120 x 60 x 60 - 30 Kg",
+                            "FlexPickUp": "true",
+                            "Buyable": "false"
+                        },
+                        {
+                            "Key": "Size XL",
+                            "Description": "Max. 120 x 60 x 60 - 70 Kg",
+                            "FlexPickUp": "true",
+                            "Buyable": "true"
+                        },
+                        {
+                            "Key": "Size XXL",
+                            "Description": "Bulky",
+                            "FlexPickUp": "true",
+                            "Buyable": "true"
+                        }
+                    ]
+                },
+                {
+                    "key": "VEH",
+                    "description": "Vehicle",
+                    "consignmentsize": [
+                        {
+                            "Key": "Minicar",
+                            "Description": "90 cm",
+                            "FlexPickUp": "false",
+                            "Buyable": "false"
+                        },
+                        {
+                            "Key": "Suv",
+                            "Description": "Suv Size",
+                            "FlexPickUp": "false",
+                            "Buyable": "false"
+                        },
+                        {
+                            "Key": "Truck",
+                            "Description": "Truck Size",
+                            "FlexPickUp": "true",
+                            "Buyable": "false"
+                        }
+                    ]
+                },
+                {
+                    "key": "PAL",
+                    "description": "Palett",
+                    "consignmentsize": [
+                        {
+                            "Key": "Size S",
+                            "Description": "Max. ISO120 - 180*200*500 cm",
+                            "FlexPickUp": "false",
+                            "Buyable": "false"
+                        },
+                        {
+                            "Key": "Size M",
+                            "Description": "ISO130 - 180*200*500 cm",
+                            "FlexPickUp": "false",
+                            "Buyable": "false"
+                        },
+                        {
+                            "Key": "Size L",
+                            "Description": "ISO150 - 180*200*500 cm",
+                            "FlexPickUp": "true",
+                            "Buyable": "false"
+                        }
+                    ]
+                },
+                {
+                    "key": "FCL",
+                    "description": "Full Container Load",
+                    "consignmentsize": [
+                        {
+                            "Key": "FCL S",
+                            "Description": "20 Feet - 180*200*500 cm",
+                            "FlexPickUp": "false",
+                            "Buyable": "false"
+                        },
+                        {
+                            "Key": "FCL M",
+                            "Description": "50 Feet - 180*200*500 cm",
+                            "FlexPickUp": "false",
+                            "Buyable": "false"
+                        },
+                        {
+                            "Key": "FCL XL",
+                            "Description": "80 Feet - 180*200*500 cm",
+                            "FlexPickUp": "true",
+                            "Buyable": "false"
+                        }
+                    ]
+                }
+            ],
+            "paymentoption": [
+                {
+                    "key": "Transfer",
+                    "description": "Transfer of Money ",
+                    "text": "yyyyyyyyyyyyyyyyyyyyyyyyy",
+                    "beneficiaryname": "matrix ltD",
+                    "beneficiarybank": "Deutsche BAnk",
+                    "beneficiaryAccount": "de1256663255555555"
+                },
+                {
+                    "key": "Paypal",
+                    "description": "Paypal here ",
+                    "text": "zzzzzzzzzzzzzzzzzzzzzzzzz",
+                    "beneficiaryname": "matrix ltD",
+                    "beneficiarypaypal": "essote@gmx.de"
+                }
+            ]
+        }
+    ]
+}

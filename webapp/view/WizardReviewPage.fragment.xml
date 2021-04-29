@@ -1,0 +1,136 @@
+<core:FragmentDefinition
+		height="100%"
+		xmlns:form="sap.ui.layout.form"
+		xmlns:core="sap.ui.core"
+		xmlns="sap.m">
+		<Page id="wizardReviewPage" showHeader="false">
+			<content>
+				<form:SimpleForm
+						title="{i18n>Order}"
+						minWidth="1024"
+						editable="false"
+						layout="ResponsiveGridLayout">
+					<form:content>
+						<Label text="{i18n>OrderNr}"/>
+						<Text id="IdShipmentnr" text="12566654"/>
+                        <Label text="{i18n>OrderStatus}"/>
+						<Text id="IdOrderStatus" text="Pending"/>
+                        <Label text="{i18n>PaymentStatus}"/>
+						<Text id="IdPaymentStatus" text="Not Paid"/>
+					</form:content>
+				</form:SimpleForm>
+                
+                
+                
+                <form:SimpleForm
+						title="{i18n>DestinationInfoReview}"
+						minWidth="1024"
+						editable="false"
+						layout="ResponsiveGridLayout">
+					<form:content>
+						<Label text="{i18n>Country}"/>
+						<Text id="IdCountry" text="{/Country}"/>
+                        <Label text="{i18n>City}"/>
+						<Text id="IdCity" text="{/City}"/>
+                         <Label text="{i18n>NextShipingDate}" tooltip="{i18n>NextShipingDate}"/>
+                         <Text id="IdNextshipingDate" text="22.07.2020"/>
+                        <Label text="{i18n>ReceiverOpt}"/>
+						<Text id="IdReceiver" text="{/Receiver}"/>
+                        <Label text="{i18n>MobilePhone}"/>
+                        <Text id="IdReceiverPhone" text=""/>
+						<Link press="editStepOne" text="Edit" />
+					</form:content>
+				</form:SimpleForm>
+
+				<form:SimpleForm
+						title="{i18n>ConsignmentInfoReview}"
+						minWidth="1024"
+						editable="false"
+						layout="ResponsiveGridLayout">
+					<form:content>
+                        <Table id="ConsignmentTable" inset="false" items="{/ConsignmentModel}" growingThreshold="4" alternateRowColors="true" growingScrollToLoad="false" growing="true" mode="MultiSelect" selectionChange="selectionChanged">
+									<headerToolbar>
+                                    <Toolbar design="Transparent" style="Clear">
+                                        <content>
+                                            <Label text="{i18n>TotalOfConsignment}" design="Bold" width="20cm" textAlign="Left"/>
+                                        </content>
+                                    </Toolbar>
+                                    </headerToolbar>
+                                    <columns>
+										<Column width="12em">
+											<ObjectIdentifier text="{i18n>ConsignmentType}"/>
+										</Column>
+										<Column>
+											<Text text="{i18n>ConsignmentSize}"/>
+										</Column>
+										<Column>
+											<Text text="{i18n>NumberConsignmentType}"/>
+										</Column>
+										<Column>
+											<ObjectNumber number="{i18n>ContentDescr}"/>
+										</Column>
+									</columns>
+									<items>
+										<ColumnListItem>
+											<cells>
+												<ObjectIdentifier title="{ContainerType}"/>
+												<Text text="{ConsignmentSize}"/>
+												<ObjectNumber number="{NumberContainerType}"/>
+                                                <Text text="{ContentDescr}"/>
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>             
+					</form:content>
+                    <Link press="editStepTwo" text="Edit" />            
+				</form:SimpleForm>
+
+				<form:SimpleForm
+						title="{i18n>PickupInfoReview}"
+						minWidth="1024"
+						editable="false"
+						layout="ResponsiveGridLayout">
+					<form:content>
+						<Label text="Some text"/>
+						<Text text="This Consignment is not qualified for picking it up. Depending on your Payment Method , choose the way you want to send us your Consignment"/>
+                            <Label text="{i18n>FromCity}"/>
+                            <Text id="IdFromCity" text="{/FromCity}"/>    
+                            <Label text="{i18n>ToCity}"/>
+                            <Text id="IdToCity" text="{/ToCity}"/>  
+                            <Label text="{i18n>PickUpOption}"/>
+                            <Text id="IdPickUpOption" text="Flexible"/>
+                            <Label text="{i18n>Pick-Up-Date}"/>
+                            <Text id="IdPick-Up-Date" text="{/Pick-Up-Date}"/>
+
+						<Link press="editStepThree" text="Edit" />
+					</form:content>
+				</form:SimpleForm>
+
+				<form:SimpleForm
+						title="{i18n>MethodOfPayementReview}"
+						minWidth="1024"
+						editable="false"
+						layout="ResponsiveGridLayout">
+					<form:content>
+                        <Label text="{i18n>MethodOfPayement}" design="Bold"/>
+                        <Text id="IdMethodOfPayement" text="Bank Transfer"/> 
+						<Label text="{i18n>BeneficiaryName}" design="Bold"/>
+						<Text id="idBeneficiaryName" text="Ngotom Essote"/>
+						<Label text="{i18n>BeneficiaryBank}" design="Bold"/>
+						<Text text="CITY BANK, SINGAPORE BRANCH"/>
+						<Label text="{i18n>BeneficiaryAccountNumber}" design="Bold"/>
+						<Text text="06110702027218"/>
+                        <Link press="editStepFour" text="Edit" />
+					</form:content>
+				</form:SimpleForm>
+			</content>
+			<footer>
+				<Bar>
+					<contentRight>
+						<Button text="Submit" press="handleWizardSubmit"/>
+						<Button text="Cancel" press="handleWizardCancel"/>
+					</contentRight>
+				</Bar>
+			</footer>
+		</Page>
+</core:FragmentDefinition>

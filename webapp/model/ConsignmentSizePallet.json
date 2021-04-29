@@ -1,0 +1,17 @@
+{
+"ConsignmentSizePallets": [{
+            "Key": "FCL S",
+			"Description": "ISO120 - 180*200*500 cm",
+            "Buyable":"true"
+
+		}, {
+            "Key": "FCL M",
+            "Description": "ISO130 - 180*200*500 cm",
+            "Buyable":"true"
+		}, {
+            "Key": "FCL XL",
+            "Description": "ISO150 - 180*200*500 cm",
+            "Buyable":"true"
+		}
+	]
+}

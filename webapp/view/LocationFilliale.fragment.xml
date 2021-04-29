@@ -1,0 +1,20 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:core="sap.ui.core">
+	<ObjectListItem
+		id="LocationFilliale"
+		icon="sap-icon://paper-plane"
+		title="{SenderLandData>RepresentationName} ({SenderLandData>Representant})"
+		type="Active"
+        intro="{SenderLandData>opentime}"
+        numberUnit="EUR"
+		press=".onItemSelected">
+        <ObjectAttribute text="{SenderLandData>StreetName}" />
+        <ObjectAttribute text="{SenderLandData>City}" />
+        <ObjectAttribute text="{SenderLandData>Contact}" />
+        <markers>
+          <ObjectMarker type="Favorite" />
+          <ObjectMarker type="Flagged" />
+        </markers>
+	</ObjectListItem>
+</core:FragmentDefinition>

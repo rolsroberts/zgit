@@ -1,0 +1,18 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m">
+  <ViewSettingsDialog confirm="onConfirm">
+    <sortItems>
+      <ViewSettingsItem selected="true" key="DateOfShipment" text="Date of Shipment"/>
+      <ViewSettingsItem key="StatusPending" text="Processing Status"/>
+    </sortItems>
+    <groupItems>
+      <ViewSettingsItem key="StatusPending" text="Processing Status"/>
+    </groupItems>
+    <filterItems>
+      <ViewSettingsFilterItem key="Price" text="Price" multiSelect="false">
+        <items>
+          <ViewSettingsItem key="Price___GT___10___X" text="Greater than 10"/>
+        </items>
+      </ViewSettingsFilterItem>
+    </filterItems>
+  </ViewSettingsDialog>
+</core:FragmentDefinition>

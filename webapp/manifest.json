@@ -1,0 +1,232 @@
+{
+    "_version": "1.12.0",
+    "sap.app": {
+        "id": "GroupageNamespace.GroupageModule",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "1.0.0"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "ach": "ach",
+        "sourceTemplate": {
+            "id": "html5moduletemplates.basicSAPUI5ApplicationProjectModule",
+            "version": "1.40.12"
+        },
+        "dataSources": {
+            "OrderDataAlias": {
+                "uri": "model/Order.json",
+                "type": "JSON"
+            },
+            "ConsignmentContentDataAlias":{
+                "uri": "model/ConsignmentContent.json",
+                "type": "JSON"
+            },
+            "ConsignmentSizeVehicleDataAlias":{
+                "uri": "model/ConsignmentSizeVehicle.json",
+                "type": "JSON"
+            },
+             "ConsignmentSizeCartonDataAlias":{
+                "uri": "model/ConsignmentSizeCarton.json",
+                "type": "JSON" 
+            },
+            "ReceiverLandDataAlias":{
+                "uri": "model/ReceiverLand.json",
+                "type": "JSON"
+            },
+            "ConsignmentSizeFclDataAlias":{
+                "uri": "model/ConsignmentSizeFcl.json",
+                "type": "JSON"
+            },
+            "SenderLandDataAlias":{
+                "uri": "model/SenderLand.json",
+                "type": "JSON"
+            },
+            "ConsignmentSizePalletDataAlias":{
+                "uri": "model/ConsignmentSizePallet.json",
+                "type": "JSON"
+            },
+            "TransportRouteDataAlias":{
+                "uri": "model/TransportRoute.json",
+                "type": "JSON"
+            },
+            "CompanyContactDetailDataAlias":{
+                "uri": "model/CompanyContactDetail.json",
+                "type": "JSON"
+            }         
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": false,
+        "rootView": {
+            "viewName": "GroupageNamespace.GroupageModule.view.Home",
+            "type": "XML",
+            "async": true,
+            "id": "Home"
+        },
+        "dependencies": {
+            "minUI5Version": "1.60.1",
+            "libs": {
+                "sap.ui.core": {},
+                "sap.m": {},
+                "sap.ui.layout": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "GroupageNamespace.GroupageModule.i18n.i18n"
+                }
+            },
+            "OrderData": {
+                "type": "sap.ui.model.json.JSONModel",
+                "dataSource": "OrderDataAlias"
+            },
+            "ConsignmentContentData": {
+                "type": "sap.ui.model.json.JSONModel",
+                "dataSource": "ConsignmentContentDataAlias"
+            },
+            "ConsignmentSizeCartonData": {
+                "type": "sap.ui.model.json.JSONModel",
+                "dataSource": "ConsignmentSizeCartonDataAlias"
+            },
+            "ConsignmentSizeVehicleData": {
+                "type": "sap.ui.model.json.JSONModel",
+                "dataSource": "ConsignmentSizeVehicleDataAlias"
+            },
+            "ReceiverLandData": {
+                "type": "sap.ui.model.json.JSONModel",
+                "dataSource": "ReceiverLandDataAlias"
+            },
+            "ConsignmentSizeFclData": {
+                "type": "sap.ui.model.json.JSONModel",
+                "dataSource": "ConsignmentSizeFclDataAlias"
+            },
+            "SenderLandData": {
+                "type": "sap.ui.model.json.JSONModel",
+                "dataSource": "SenderLandDataAlias"
+            },
+            "ConsignmentSizePalletData": {
+                "type": "sap.ui.model.json.JSONModel",
+                "dataSource": "ConsignmentSizePalletDataAlias"
+            },
+            "TransportRouteData": {
+                "type": "sap.ui.model.json.JSONModel",
+                "dataSource": "TransportRouteDataAlias"
+            },
+            "CompanyContactDetailData": {
+                "type": "sap.ui.model.json.JSONModel",
+                "dataSource": "CompanyContactDetailDataAlias"
+            }
+            
+            
+        },
+        "resources": {
+            "css": [
+                {
+                    "uri": "css/style.css"
+                }
+            ]
+        },
+        "routing": {
+            "config": {
+                "routerClass": "sap.m.routing.Router",
+                "viewType": "XML",
+                "async": true,
+                "viewPath": "GroupageNamespace.GroupageModule.view",
+                "controlAggregation": "pages",
+                "controlId": "app",
+                "clearControlAggregation": false,
+                "bypassed": {
+                    "target": "NotFoundTarget"
+                }
+
+            },
+            "routes": [
+                {
+                    "name": "RouteHome",
+                    "pattern": "",
+                    "target": ["TargetHome"]
+                },
+                {
+                    "name": "RouteNewOrder",
+                    "pattern": "RouteNewOrder",
+                    "target": ["TargetNewOrder"]
+                },
+                {
+                    "name": "RouteExistingOrder",
+                    "pattern": "RouteExistingOrder",
+                    "target": ["TargetExistingOrder"]
+                },
+                {
+                    "name": "RouteFaq",
+                    "pattern": "RouteFaq",
+                    "target": ["TargetFaq"]
+                },
+
+                {
+                    "name": "RouteOrderDetail",
+                    "pattern": "RouteOrderDetail/{OrderNr}",
+                    "target": ["TargetOrderDetail"]
+                }
+                
+            ],
+            "targets": {
+                "TargetHome": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewName": "Home"                    
+                },
+                "TargetNewOrder": {
+					"viewType": "XML",
+                    "viewName": "NewOrder",
+                    "transition":"slide"
+				},
+				"TargetExistingOrder": {
+					"viewType": "XML",
+                    "viewName": "ExistingOrder",
+                    "transition":"slide"
+				},
+				"TargetFaq": {
+					"viewType": "XML",
+                    "viewName": "Faq",
+                    "transition":"slide"
+                },
+                "NotFoundTarget": {
+                    "viewName": "NotFound",
+                    "transition": "show"
+                },
+                "TargetOrderDetail":{
+                    "viewName": "OrderDetail",
+                    "transition": "show"
+                }             
+                
+                
+            }
+        }
+    }
+}

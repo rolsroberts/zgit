@@ -1,0 +1,64 @@
+{
+"SenderLands": [
+       {
+            "Key": "GER",
+            "Description": "Germany",
+            "Flag":"xcdf",
+            "FlexPickUp":"false",
+            "PickUpRepresentations": [{
+                "RepresentationName": "Shop Port Gentil",
+                "Representant":"Polo",
+                "RepresentationTyp":"Shop",
+                "City":"Bordeaux",
+                "StreetName": "les Chatreaux 33 ",
+                "StreetNumber": "30",
+                "Co":"derriere les chanps",
+                "opentime":"Mon-Fri: 8-10h Sunday 08-10h",
+                "Contact":"01762563636566",
+                "maxstorage":"30"  },
+
+             {
+                "RepresentationName": "Shop Port Gentil",
+                "Representant":"Marco",
+                "RepresentationTyp":"Filliale",
+                "City":"Bordeaux",
+                "StreetName": "les Chatreaux 33 ",
+                "StreetNumber": "30",
+                "Co":"derriere les chanps",
+                "opentime":"Mon-Fri: 8-10h Sunday 08-10h",
+                "Contact":"01762563636566",
+                "maxstorage":"30"
+             }]
+ 
+		}, {
+            "Key": "FRA",
+            "Description": "France",
+            "Flag":"xcdf",
+            "FlexPickUp":"false",
+            "PickUpRepresentations": [{
+                "RepresentationName": "Shop Port Gentil",
+                "Representant":"Marco",
+                "RepresentationTyp":"Shop",
+                "City":"Bordeaux",
+                "StreetName": "les Chatreaux 33 ",
+                "StreetNumber": "30",
+                "Co":"derriere les chanps",
+                "opentime":"Mon-Fri: 8-10h Sunday 08-10h",
+                "Contact":"01762563636566",
+                "maxstorage":"30"
+             },
+             {
+                "RepresentationName": "Shop le berger",
+                "Representant":"Patrick",
+                "RepresentationTyp":"Filliale",
+                "City":"Paris",
+                "StreetName": "Champ elysees",
+                "StreetNumber": "30",
+                "Co":"derriere les chanps",
+                "opentime":"Mon-Fri: 8-10h Sunday 08-10h",
+                "Contact":"01762563636566",
+                "maxstorage":"30"
+             }]
+		}
+	]
+}

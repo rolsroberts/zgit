@@ -1,0 +1,168 @@
+{
+            "FirstName":"Robert",
+            "SecondName":"Ngotom Essote",
+            "Birthdate":"25.03.1969",
+            "Email":"essote@gmx.de",
+            "MobilePhone":"01652225522",
+            "Whatsapp":"true",
+            "Street":"Madamen weg",
+            "HouseNumber":"125",
+            "ZipCode":"38225",
+            "City":"Braunschweig",
+            "Country":"Deutschland",
+    "Orders": [{
+            "OrderNr": "0012345",
+            "DateOfPickUp": "25.03.2020",
+            "DateOfShipment": "07.05.2020",
+            "DestinationLand": "Cameroon",
+            "AltDestination": "PortCity",
+            "StatusOrder": "Completed",
+            "PaymentStatus": "Paid",
+            "OrderPrice": 50,
+            "CreationDate": "20.03.2020 07:00",
+            "ProcessingStatus": "Consignment received",
+            "ReceiverName": "Roberto",
+            "ReceiverPhone": "0176256652",
+            "PaymentOption": "Banktransfer",
+            "PickUpOption": "Flex Date",
+            "PickUpFromCity": "Salzgitter",
+            "PickUpFromStreet": "Augusta-Friedrich str 22",
+            "PickUpFromPostcode": "38222",
+            "PickUpHouseHolder": "Robert Essote",
+            "PickUpDateOfPickUp": "20200101",
+            "PickUpTrackingInfo":"225455565555555555555",
+            "Evaluation":"4",
+            "ConsignmentInfo": [
+                {
+                    "ConsignmentNr":"225684",
+                    "Type": "Parcel",
+                    "Size": "30",
+                    "Content": [{"Key": "Cosmetics",
+                                 "Description": "Anything abount beauty" },
+                                {"Key": "Others",
+                                 "Description": "Others" }
+                                ]
+                },
+                {
+                    "ConsignmentNr":"158995",
+                    "Type": "Parcel",
+                    "Size": "30",
+                    "Content": [{"Key": "Cosmetics",
+                                 "Description": "Anything abount beauty" },
+                                {"Key": "Others",
+                                 "Description": "Others" }
+                                ]
+                }
+            ],
+
+            "Notifications": [{  
+                    "title":"me",
+                    "Datum":"023545",
+                    "text": "Ihr Consignment is ready to go ",
+                    "status":"gelöscht"
+                },
+                {  
+                    "title":"Support",
+                    "Datum":"023545",
+                    "text": "The Ship will arrived on 22.01.22",
+                    "status":"gelöscht"
+            }]
+        },
+        {
+            "OrderNr": "245698",
+            "DateOfPickUp": "01.01.2019",
+            "DateOfShipment": "10.11.2019",
+            "DestinationLand": "Cameroun",
+            "EndDestination": "PortCity",
+            "StatusOrder": "Canceled",
+            "PaymentStatus": "Not Paid",
+            "OrderPrice": 60,
+            "CreationDate": "20.03.2020 09:00",
+            "ProcessingStatus": "Ready to be shipped",
+            "ReceiverName": "Martina",
+            "ReceiverPhone": "0111111111",
+            "PaymentOption": "Banktransfer",
+            "PickUpOption": "Flex Date",
+            "PickUpFromCity": "Salzgitter",
+            "PickUpFromStreet": "Augusta-Friedrich str 22",
+            "PickUpFromPostcode": "38222",
+            "PickUpHouseHolder": "Robert Essote",
+            "PickUpDateOfPickUp": "20200101",
+            "PickUpTrackingInfo":"225455565555555555555",
+            "Evaluation":"0",
+            "ConsignmentInfo": [
+                {
+                    "ConsignmentNr":"12354",
+                    "Type": "Parcel",
+                    "Size": "30",
+                    "Content": [{"Key": "Cosmetics",
+                                 "Description": "Anything abount beauty" },
+                                {"Key": "Others",
+                                 "Description": "Others" }
+                                ]
+                }
+            ],
+            "Notifications": [{  
+                    "title":"me",
+                    "Datum":"023545",
+                    "text": "Ihr Consignment is ready to go ",
+                    "status":"gelöscht"
+                },
+                {  
+                    "title":"Support",
+                    "Datum":"023545",
+                    "text": "The Ship will arrived on 22.01.22",
+                    "status":"gelöscht"
+            }]
+
+        },
+        {
+            "OrderNr": "345789",
+            "DateOfPickUp": "06.03.2020",
+            "DateOfShipment": "07.05.2020",
+            "DestinationLand": "Cameroun",
+            "EndDestination": "PortCity",
+            "StatusOrder": "Pending",
+            "PaymentStatus": "Paid",
+            "OrderPrice": 60,
+            "CreationDate": "20.03.2020 07:00",
+            "ProcessingStatus": "Consignment onboard",
+            "ReceiverName": "Frank",
+            "ReceiverPhone": "09999999999",
+            "PaymentOption": "Banktransfer",
+            "PickUpOption": "Flex Date",
+            "PickUpFromCity": "Salzgitter",
+            "PickUpFromStreet": "Augusta-Friedrich str 22",
+            "PickUpFromPostcode": "38222",
+            "PickUpHouseHolder": "Robert Essote",
+            "PickUpDateOfPickUp": "20200101",
+            "PickUpTrackingInfo":"225455565555555555555", 
+            "Evaluation":"0",          
+            "ConsignmentInfo": [
+                {
+                    "ConsignmentNr":"99956",
+                    "Type": "Vehicle",
+                    "Size": "30",
+                    "Content": [{"Key": "Cosmetics",
+                                 "Description": "Anything abount beauty" },
+                                {"Key": "Others",
+                                 "Description": "Others" }
+                                ]
+                }
+            ],
+            "Notifications": [{  
+                    "Autor":"me",
+                    "Datum":"023545",
+                    "text": "Ihr Consignment is ready to go ",
+                    "status":"gelöscht"
+                },
+                {  
+                    "Autor":"Support",
+                    "Datum":"023545",
+                    "text": "The Ship will arrived on 22.01.22",
+                    "status":"gelöscht"
+            }]
+            
+        }
+    ]
+}

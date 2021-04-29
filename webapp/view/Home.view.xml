@@ -1,0 +1,206 @@
+<mvc:View controllerName="GroupageNamespace.GroupageModule.controller.Home" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:tnt="sap.tnt" xmlns:f="sap.f" xmlns:card="sap.f.cards">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="Rootpage" title="{i18n>title}">
+                    <customHeader>
+                        <Bar>
+                            <contentLeft>
+                                <Button
+                                    icon="https://cdn.worldvectorlogo.com/logos/cargo-floor.svg"
+                                    press=".onShowHome"
+                                    visible="true"/>
+                            </contentLeft>
+                            <contentMiddle>
+                                <Button icon="sap-icon://home" type="Transparent" enabled="false">
+                                    <layoutData>
+                                        <OverflowToolbarLayoutData priority="NeverOverflow" />
+                                    </layoutData>
+                                </Button>
+                                <Title
+                                    level="H2"
+                                    tooltip="{i18n>welcomeDescription}"
+                                    text="{i18n>welcomeHeadline}"/>
+                            </contentMiddle>
+                            <contentRight>
+                                <Button text="Contact Us" enabled="false" type="Transparent" press="onSeeOurContact">
+                                    <layoutData>
+                                        <OverflowToolbarLayoutData priority="NeverOverflow" />
+                                    </layoutData>
+                                </Button>
+                                <Avatar
+										displaySize="XS"
+										fallbackIcon="sap-icon://call"
+										backgroundColor="Blue"
+                                        showBorder="true"
+                                        displayShape="Circle"
+                                        press="onSeeOurContact"/>
+                                
+                            </contentRight>
+                        </Bar>
+                    </customHeader>
+					<content>
+                    <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                backgroundImage="https://openui5.hana.ondemand.com/test-resources/sap/tnt/demokit/toolpageapp/webapp/images/homeImage.jpg"
+                                frameType="OneByOne" press="onExistingOrder">
+                        <TileContent footer="See your last orders" frameType="OneByOne">
+                            <NewsContent
+                                    contentText="{i18n>titleExistingOrder}"
+                                    subheader="{i18n>ExistingOrderSubheader}" />
+                        </TileContent>
+                    </GenericTile>
+
+
+                    <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop"
+                                backgroundImage=""
+                                frameType="OneByOne" press="onNewOrder">
+                        <TileContent footer="make an order" frameType="OneByOne">
+                            <NewsContent
+                                    contentText="{i18n>titleNewOrder}"
+                                    subheader="{i18n>NewOrderDescr}" />
+                        </TileContent>
+                    </GenericTile>
+
+
+                    <GenericTile class="sapUiTinyMarginBegin sapUiTinyMarginTop tileLayout" header="{i18n>Faq}"  subheader="{i18n>FaqTxt}"
+						press="onFaq">
+						<TileContent unit="Unit" footer="Footer">
+							<ImageContent src="sap-icon://sys-help-2"/>
+						</TileContent>
+					</GenericTile> 
+
+                   
+
+					<MessageStrip showIcon="true" type="Information"
+						text="{i18n>GeneralInfo}" class="sapUiTinyMargin"/>
+
+
+                    <l:BlockLayout background="Light">
+				<l:BlockLayoutRow>
+					<l:BlockLayoutCell class="sapUiNoContentPadding" >
+						<Carousel
+							id="welcomeCarousel"
+							showPageIndicator="false"
+							loop="true"
+							pageChanged="onCarouselPageChanged"
+							visible="true"
+							tooltip="{i18n>welcomeDescription}">
+							<pages>
+								<VBox renderType="Bare">
+									<Image
+										src="{
+											path: 'view>/welcomeCarouselShipping',
+											formatter : '.formatter.pictureUrl'
+											}"
+										width="100%"
+										height="100%"/>
+									<Text
+										text="{i18n>welcomeCarouselShipping}"
+										class="welcomeCarouselText"/>
+								</VBox>
+								<VBox renderType="Bare">
+									<Image
+										src="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/cart/webapp/img/ShopCarouselShipping.jpg"
+										width="100%"
+										height="100%" />
+									<Text
+										text="{i18n>welcomeCarouselPickUp}"
+										class="welcomeCarouselText"/>
+								</VBox>
+								<VBox renderType="Bare">
+									<Image
+										src="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/cart/webapp/img/ShopCarouselTablet.jpg"
+										width="100%"
+										height="100%"/>
+									<Text
+										text="{i18n>welcomeCarouselTracking}"
+										class="welcomeCarouselText"/>
+								</VBox>
+								<VBox renderType="Bare">
+									<Image
+										src="https://openui5.hana.ondemand.com/test-resources/sap/m/demokit/cart/webapp/img/ShopCarouselCreditCard.jpg"
+										width="100%"
+										height="100%"/>
+									<Text
+										text="{i18n>welcomeCarouselPayment}"
+										class="welcomeCarouselText"/>
+								</VBox>
+							</pages>
+						</Carousel>
+					</l:BlockLayoutCell>
+				</l:BlockLayoutRow>
+                <l:BlockLayoutRow>
+			<l:BlockLayoutCell class="sapUiNoContentPadding" width="1">
+<f:Card class="sapUiMediumMargin" width="300px">
+		<f:header>
+			<card:Header title="All Routes" subtitle="Days before departure | Days" />
+		</f:header>
+		<f:content>
+			<List
+				showSeparators="None"
+				items="{
+					path: 'TransportRouteData>/TransportRoutes'
+				}">
+				<CustomListItem>
+					<HBox alignItems="Center" justifyContent="SpaceBetween">
+						<VBox class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" >
+							<Title level="H3" text="{TransportRouteData>Key}" />
+							<Text text="{TransportRouteData>Description}" />
+						</VBox>
+						<ObjectStatus
+							class="sapUiTinyMargin sapUiSmallMarginEnd"
+							text="{path:'TransportRouteData>NextShipingDate', formatter: '.formatter.RestingDateBeforeShipping' }"
+							state="Success" />
+					</HBox>
+				</CustomListItem>
+			</List>
+		</f:content>
+	</f:Card>
+
+                    </l:BlockLayoutCell>
+
+                    <l:BlockLayoutCell title="Contact us" width="2">                          
+                            <List
+                                headerText="{SupplierName}"
+                                binding="{TransportRouteData>/TransportRoutes}" >
+                                <items>
+                                    <DisplayListItem
+                                        label="Telephone"
+                                        value="017626855101"
+                                        type="Active"
+                                        press="handleTelPress" />
+                                    <DisplayListItem
+                                        label="SMS"
+                                        value="{Sms}"
+                                        type="Active"
+                                        press="handleSmsPress" />
+                                    <DisplayListItem
+                                        label="Email"
+                                        value="{Email}"
+                                        type="Active"
+                                        press="handleEmailPress" />
+                                    <DisplayListItem
+                                        label="Website"
+                                        value="{Url}"
+                                        type="Active"
+                                        press="handleUrlPress" />
+                        
+                                </items>
+                            </List>
+                </l:BlockLayoutCell>
+            </l:BlockLayoutRow>
+        </l:BlockLayout>
+                    </content>
+                    <footer>
+						<Bar>
+							<contentRight>
+								<Button text="Submit" press="handleWizardSubmit"/>
+								<Button text="Cancel" press="handleWizardCancel"/>
+							</contentRight>
+						</Bar>
+					</footer>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>

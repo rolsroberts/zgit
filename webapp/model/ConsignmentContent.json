@@ -1,0 +1,13 @@
+{
+"ConsignmentContents": [{
+            "Key": "Cosmetics",
+			"Description": "Anything abount beauty"
+		}, {
+            "Key": "Entertainment",
+            "Description": "Anything about Entertainment"
+		}, {
+            "Key": "Others",
+            "Description": "Others"
+		}
+	]
+}

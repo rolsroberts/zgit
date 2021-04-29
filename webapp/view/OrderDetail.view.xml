@@ -1,0 +1,222 @@
+<mvc:View controllerName="GroupageNamespace.GroupageModule.controller.OrderDetail" xmlns:semantic="sap.f.semantic" xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:tnt="sap.tnt">
+		<semantic:SemanticPage
+		id="page"
+		headerPinnable="true"
+		toggleHeaderOnTitleClick="true"
+        preserveHeaderStateOnScroll="false"
+		busy="{objectView>/busy}"
+		busyIndicatorDelay="{objectView>/delay}"
+        >
+		
+        <semantic:titleContent>
+			<Image src="https://cdn.worldvectorlogo.com/logos/cargo-floor.svg" tooltip="This is just a placeholder, not a real KPI control." height="5rem" width="5rem"/>
+		</semantic:titleContent>
+        <semantic:titleHeading>
+			<Title text="{OrderData>OrderNr}" />
+		</semantic:titleHeading>
+
+
+		<semantic:headerContent>
+			<FlexBox
+				alignItems="Start"
+				justifyContent="SpaceBetween">
+				
+                <Panel backgroundDesign="Transparent">
+					<ObjectAttribute
+						title="{i18n>CreationDAte}"
+						text="{OrderData>CreationDate}"/>
+                    <ObjectAttribute
+						title="{i18n>OrderStatus}"
+						text="{OrderData>StatusOrder}"/>
+                    <ObjectStatus
+                        text="{OrderData>PaymentStatus}"
+						state="{path:'OrderData>PaymentStatus' ,formatter:'.formatter.PaymentState'}"
+                        class="sapUiSmallMarginBottom"
+                        inverted="true"
+						/>
+				</Panel>
+                
+				<Panel backgroundDesign="Transparent">
+                    <ObjectNumber
+						id="orderPrice"
+						unit="Eur"
+						textAlign="End"
+						state="{
+							path: 'OrderData>OrderPrice',
+							formatter: '.formatter.PriceState'}"
+						number="{
+							path: 'OrderData>OrderPrice',
+							formatter: '.formatter.PriceAmount'}">
+					</ObjectNumber>
+					<ObjectStatus
+                        text="{OrderData>ProcessingStatus}"
+						state="Error"
+                        icon="sap-icon://message-warning"
+                        class="sapUiSmallMarginBottom"
+                        inverted="true"
+						/>
+                        
+					<ProgressIndicator
+						width="300px"
+						percentValue="{ path: 'OrderData>ProcessingStatus',
+                                        formatter: '.formatter.ProgressIndicatorOrder'}"
+						displayValue="{ path: 'OrderData>ProcessingStatus',
+                                        formatter: '.formatter.ProgressIndicatorOrder'} "
+						showValue="true"
+						state="{
+							path: 'UnitsInStock',
+							formatter: '.formatter.quantityState'}" />  
+				</Panel>
+                
+			</FlexBox>
+		</semantic:headerContent>
+		<semantic:content>
+			<l:VerticalLayout width="100%">
+			<Panel
+				backgroundDesign="Transparent"
+				headerText="{i18n>OrderTabTitle}">
+				<content> 
+                
+                <form:SimpleForm
+						title="{i18n>DestinationInfoReview}"
+						minWidth="1024"
+						editable="false"
+						layout="ResponsiveGridLayout">
+					<form:content>
+						<Label text="{i18n>Country}"/>
+						<Text id="IdCountry" text="{/Country}"/>
+                        <Label text="{i18n>City}"/>
+						<Text id="IdCity" text="{OrderData>DestinationCity}"/>
+                         <Label text="{i18n>NextShipingDate}" tooltip="{i18n>NextShipingDate}"/>
+                         <Text id="IdNextshipingDate" text="{OrderData>DateOfShipment}"/>
+                        <Label text="{i18n>ReceiverOpt}"/>
+						<Text id="IdReceiver" text="{OrderData>ReceiverName}"/>
+                        <Label text="{i18n>MobilePhone}"/>
+                        <Text id="IdReceiverPhone" text="{OrderData>ReceiverPhone}"/>
+					</form:content>
+				</form:SimpleForm>
+
+				<form:SimpleForm
+						title="{i18n>ConsignmentInfoReview}"
+						minWidth="1024"
+						editable="false"
+						layout="ResponsiveGridLayout">
+					<form:content>
+                        <Table id="ConsignmentTable" inset="false" items="{path: 'OrderData>ConsignmentInfo'}"  growingThreshold="4" alternateRowColors="true" growingScrollToLoad="false" growing="true" mode="MultiSelect" selectionChange="selectionChanged">
+									<headerToolbar>
+                                    <Toolbar design="Transparent" style="Clear">
+                                        <content>
+                                            <Label text="{i18n>TotalOfConsignment}" design="Bold" width="20cm" textAlign="Left"/>
+                                        </content>
+                                    </Toolbar>
+                                    </headerToolbar>
+                                    <columns>
+										<Column>
+											<Text text="{i18n>ConsignmentNr}"/>
+										</Column>
+                                        <Column width="12em">
+											<ObjectIdentifier text="{i18n>ConsignmentType}"/>
+										</Column>
+										<Column>
+											<Text text="{i18n>ConsignmentSize}"/>
+										</Column>
+										<Column>
+											<ObjectNumber number="{i18n>ContentDescr}"/>
+										</Column>
+									</columns>
+									<items>
+										<ColumnListItem>
+											<cells>
+												<Text text="{OrderData>ConsignmentNr}"/>
+                                                <ObjectIdentifier title="{OrderData>Type}"/>
+												<Text text="{OrderData>Size}"/>
+                                                <Text text="{OrderData>Content}"/>
+											</cells>
+										</ColumnListItem>
+									</items>
+								</Table>             
+					</form:content>       
+				</form:SimpleForm>
+
+				<form:SimpleForm
+						title="{i18n>PickupInfoReview}"
+						minWidth="1024"
+						editable="false"
+						layout="ResponsiveGridLayout">
+					<form:content>
+						<Label text="Some text"/>
+						<Text text="This Consignment is not qualified for picking it up. Depending on your Payment Method , choose the way you want to send us your Consignment"/>
+                            <Label text="{i18n>FromAdress}"/>
+                            <Text id="IdFromAdress" text="{parts:[{path:'OrderData>PickUpFromCity'},
+                                                                 {path:'OrderData>PickUpFromPostcode'},
+                                                                 {path:'OrderData>PickUpFromStreet'},
+                                                                 {path:'OrderData>PickUpHouseHolder'}],
+                                                                 formatter:'.formatter.adress'}" />    
+                            <Label text="{i18n>ToAdress}"/>
+                            <Text id="IdToAdress" text=" "/>  
+                            <Label text="{i18n>PickUpOption}"/>
+                            <Text id="IdPickUpOption" text="{OrderData>PickUpOption}"/>
+                            <Label text="{i18n>Pick-Up-Date}"/>
+                            <Text id="IdPickUpDate" text="{OrderData>PickUpDateOfPickUp}"/>
+                            <Label text="{i18n>TrackingNr}"/>
+                            <Text id="tracking" text="{OrderData>PickUpTrackingInfo}"/>
+					</form:content>
+				</form:SimpleForm>
+
+				<form:SimpleForm
+						title="{i18n>MethodOfPayementReview}"
+						minWidth="1024"
+						editable="false"
+						layout="ResponsiveGridLayout">
+					<form:content>
+                        <Label text="{i18n>MethodOfPayement}" design="Bold"/>
+                        <Text id="IdMethodOfPayement" text="Bank Transfer"/> 
+						<Label text="{i18n>BeneficiaryName}" design="Bold"/>
+						<Text id="idBeneficiaryName" text="Ngotom Essote"/>
+						<Label text="{i18n>BeneficiaryBank}" design="Bold"/>
+						<Text text="CITY BANK, SINGAPORE BRANCH"/>
+						<Label text="{i18n>BeneficiaryAccountNumber}" design="Bold"/>
+						<Text text="06110702027218"/>
+					</form:content>
+				</form:SimpleForm>
+				</content>
+			</Panel>
+				<Panel
+					backgroundDesign="Transparent"
+					headerText="{i18n>OrderCommentsTabTitle}">
+					<content>
+						 <RatingIndicator id="RI_default" maxValue="5" class="sapUiSmallMarginBottom" value="4" tooltip="Rating Tooltip" editable="false"/>    
+    <l:BlockLayout id="BlockLayout" background="Light">
+                <l:BlockLayoutRow>
+				<l:BlockLayoutCell title="{i18n>WriteAQuestion}" width="4">
+					<FeedInput post=".onPost"/>
+                    <form:SimpleForm editable="true" backgroundDesign="Transparent">
+						<List
+							id="idCommentsList"
+							noDataText="{i18n>ObjectCommentNoData}"
+							showSeparators="Inner"
+							items="{
+								path: 'OrderData>Notifications',
+                                sorter: {
+                                    path: 'Datum',
+                                    descending: true
+								}
+							}">
+							<FeedListItem
+								info="{OrderData>Autor}"
+								text="{OrderData>text}"
+								timestamp="{OrderData>Datum}"/>
+						</List>
+					</form:SimpleForm>
+				</l:BlockLayoutCell>
+			</l:BlockLayoutRow>
+            </l:BlockLayout>
+					</content>
+				</Panel>
+			</l:VerticalLayout>
+		</semantic:content>
+        <semantic:titleCustomIconActions>
+			<OverflowToolbarButton icon="sap-icon://nav-back" text="cart" press="onBackButtonPress"/>
+		</semantic:titleCustomIconActions>
+	</semantic:SemanticPage>
+</mvc:View>

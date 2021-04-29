@@ -1,0 +1,29 @@
+{
+    "ConsignmentSizeCartons": [
+        {
+            "Key": "Size S",
+            "Description": "Max. 120 x 60 x 60 - 5 Kg",
+            "Buyable":"false"
+        },
+        {
+            "Key": "Size M",
+            "Description": "Max. 120 x 60 x 60 - 10 Kg",
+            "Buyable":"false"
+        },
+        {
+            "Key": "Size L",
+            "Description": "Max. 120 x 60 x 60 - 30 Kg",
+            "Buyable":"false"
+        },
+        {
+            "Key": "Size XL",
+            "Description": "Max. 120 x 60 x 60 - 70 Kg",
+            "Buyable":"true"
+        },
+        {
+            "Key": "Size XXL",
+            "Description": "Bulky",
+            "Buyable":"true"
+        }
+    ]
+}

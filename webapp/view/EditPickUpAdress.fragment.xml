@@ -1,0 +1,32 @@
+<core:FragmentDefinition xmlns:f="sap.ui.layout.form" xmlns:l="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml" xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core">
+<Dialog title="My Dialog">
+<l:Grid id="idGrid" width="auto" defaultSpan="L12 M12 S12">
+<l:content>
+<f:SimpleForm title="Address" id="SimpleFormDisplay354" columnsM="4" columnsL="4" emptySpanM="4" emptySpanL="6" labelSpanM="3" labelSpanL="3" layout="ResponsiveGridLayout" editable="false" maxContainerCols="6" minWidth="1024">
+<f:content>
+                            <Label text="{i18n>Street}" tooltip="{i18n>Street}"/>
+							<MaskInput placeholder="{i18n>PlceHolderStreet}" value="{ModelNewOrder>/streetConsignment}" mask="~~~~~~~~~~~~~~~~~">
+								<rules>
+									<MaskInputRule maskFormatSymbol="~" regex="[^_]"/>
+								</rules>
+							</MaskInput>
+                            <MaskInput width="50px"  value="{ModelNewOrder>/streetNrConsignment}" mask="999" placeholder="{i18n>PlceHolderStreetnr}"/>
+							
+                            <Label text="{i18n>PostCode}" tooltip="{i18n>PostCode}"/>
+							<MaskInput placeholder="{i18n>PlceHolderPostCode}" mask="99999" value="{ModelNewOrder>/postCodeConsignmemt}" ></MaskInput>
+							<Label text="{i18n>City}" tooltip="{i18n>City}"/>
+							<MaskInput placeholder="{i18n>PlceHolderCity}" value="{ModelNewOrder>/cityConsignment}" mask="~~~~~~~~~~~~~~~~~"> 
+								<rules>
+									<MaskInputRule maskFormatSymbol="~" regex="[^_]"/>
+								</rules>
+							</MaskInput>
+</f:content>
+</f:SimpleForm>
+</l:content>
+</l:Grid>
+<buttons>
+<Button id="ClosePickUpAdress" text="CLOSE" type="Reject" press="closeDialog"/>
+<Button id="SavePickUpAdress" text="SAVE" type="Accept" press="onSave"/>
+</buttons>
+</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,21 @@
+{
+    "ConsignmentSizeFcls": [
+        {
+            "Key": "FCL S",
+            "Description": "20 Feet - 180*200*500 cm",
+            "Buyable": "false"
+
+        },
+        {
+            "Key": "FCL M",
+            "Description": "50 Feet - 180*200*500 cm",
+            "Buyable": "false"
+
+        },
+        {
+            "Key": "FCL XL",
+            "Description": "80 Feet - 180*200*500 cm",
+            "Buyable": "false"
+        }
+    ]
+}

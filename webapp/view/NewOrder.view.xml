@@ -1,0 +1,255 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:form="sap.ui.layout.form" xmlns:f="sap.f" xmlns:w="sap.ui.integration.widgets" xmlns:card="sap.f.cards" xmlns:u="sap.ui.unified" xmlns:tnt="sap.tnt" xmlns:layout="sap.ui.layout" xmlns:html="http://www.w3.org/1999/xhtml" controllerName="GroupageNamespace.GroupageModule.controller.NewOrder">
+<Shell id="shell">
+<App id="app">
+<!--https://embed.plnkr.co/O9H3b8dHapXLKl7dj38c/ https://openui5.hana.ondemand.com/entity/sap.m.Wizard/sample/sap.m.sample.Wizard-->
+<NavContainer id="wizardNavContainer">
+<pages>
+<Page id="page" title="{i18n>NewOrder}">
+<customHeader>
+<Bar>
+<contentLeft>
+<Button icon="https://cdn.worldvectorlogo.com/logos/cargo-floor.svg" press=".onShowHome" visible="true"/>
+</contentLeft>
+<contentMiddle>
+<Button icon="sap-icon://add-product" type="Transparent" enabled="false">
+<layoutData>
+<OverflowToolbarLayoutData priority="NeverOverflow"/>
+</layoutData>
+</Button>
+<Title level="H2" tooltip="{i18n>welcomeDescription}" text="New Order"/>
+</contentMiddle>
+<contentRight>
+<Button text="Contact Us" enabled="false" type="Transparent" press="onSeeOurContact">
+<layoutData>
+<OverflowToolbarLayoutData priority="NeverOverflow"/>
+</layoutData>
+</Button>
+<Avatar displaySize="XS" fallbackIcon="sap-icon://call" backgroundColor="Blue" showBorder="true" displayShape="Circle" press="onSeeOurContact"/>
+</contentRight>
+</Bar>
+</customHeader>
+<content>
+<Wizard id="CreateProductWizard" complete="wizardCompletedHandler" class="sapUiResponsivePadding--header sapUiResponsivePadding--content">
+<WizardStep id="Destination" title="{i18n>DestinationInfo}" validated="true">
+<MessageStrip class="sapUiSmallMarginBottom" text="{i18n>WarningFirstStep}" showIcon="true" type="Warning"/>
+<MessageStrip class="sapUiSmallMarginBottom" text="{i18n>WarningFirstStep2}" showIcon="true" type="Warning"/>
+<Text class="sapUiSmallMarginBottom" text="Select the City, where you want to send a Consignment to. This Consignment could be taken by a Person of your Choice and in one Place of your Choice.For Information purposes you could give the Contactnumber of a Receiver, so that we could inform when the Consignment is arrived at the Seaport"/>
+<form:SimpleForm editable="true">
+<Label text="{i18n>DestinationLand}" tooltip="{i18n>DestinationLand}"/>
+<ComboBox class="sapUiSmallMarginBottom" id="idSelectRcvLand" selectionChange="onChangeDestinationLand" showSecondaryValues="true" value="{ModelNewOrder>/destinationPort}" valueState="Information" valueStateText="{i18n>InformationForDestinationPort}" items="{ path: 'ReceiverLandData>/ReceiverLands', sorter: { path: 'ReceiverLandData>Key' } }" loadItems="handleLoadItems">
+<core:ListItem key="{ReceiverLandData>Key}" text="{ReceiverLandData>Description}" additionalText="{ReceiverLandData>Key}"/>
+</ComboBox>
+<FormattedText id="RouteFormatted" htmlText="" class="sapUiSmallMargin sapThemeHighlight-asColor myCustomText"/>
+<Label id="idDeliveryOptAltcity" text="{i18n>DeliveryOpt}"/>
+<ComboBox xmlns="sap.m" id="DeliveryOption" value="{ModelNewOrder>/deliveryOption}" selectionChange="onChangeDestinationOption">
+<core:Item text="Portcity"/>
+<core:Item text="Other City"/>
+</ComboBox>
+<ComboBox xmlns="sap.m" id="AltCityReceiverLand" enabled="false" value="{ModelNewOrder>/altCity}" width="150px">
+                                        </ComboBox>
+<Label text="{i18n>NextShipingDate}" tooltip="{i18n>NextShipingDate}"/>
+<Input id="NextShipDate" value="" enabled="false"/>
+<FormattedText id="ArrivalDateFormattedText" htmlText="" class="sapUiSmallMargin sapThemeHighlight-asColor myCustomText"/>
+<Label text="{i18n>StorageDays}"/>
+<StepInput value="{ModelNewOrder>/storageDays}" displayValuePrecision="{displayValuePrecision}" min="1" max="5" width="30px" step="{step}" largerStep="{largerStep}" stepMode="{stepMode}" valueState="{valueState}" enabled="{enabled}" editable="{editable}" description="{description}" fieldWidth="{fieldWidth}" textAlign="{textAlign}" validationMode="{validationMode}" change="onChange"/>
+<Label text="{i18n>ReceiverOpt}" tooltip="{i18n>ReceiverOpt}"/>
+<MaskInput placeholder="{i18n>PlceHolderReceiverOpt}" value="{ModelNewOrder>/receiverFirstName}">
+<rules>
+<MaskInputRule maskFormatSymbol="~" regex="[^_]"/>
+</rules>
+</MaskInput>
+<MaskInput mask="~~~~~~~~~~~~~~~~~~~~" value="{ModelNewOrder>/receiverFirstName}"/>
+<Label text="{i18n>MobilePhone}" tooltip="{i18n>MobilePhone}"/>
+<MaskInput mask="9999999999999" placeholderSymbol="_" placeholder="{i18n>PlceHolderMobilePhone}" value="{ModelNewOrder>/receiverPhone}"/>
+</form:SimpleForm>
+</WizardStep>
+<WizardStep id="Consignment" title="{i18n>ConsignmentInformation}" validated="true">
+<Text class="sapUiSmallMarginBottom" text="Please select add a selectable Consigment type to your Order and describe the Content. The Consignment type influence the price. At a certain big Size, you decide in the next Step whether we will pick it up at your home or you can bring the consignment to us yourself"/>
+<MessageStrip class="sapUiSmallMarginBottom" id="WarningCommandpackaging" text="{i18n>WarningCommandpackaging}" showIcon="true" type="Warning" visible="false"/>
+<HBox alignItems="Center" justifyContent="Center" width="100%">
+<items>
+<SegmentedButton id="IdConsignmentType" width="300px" selectionChange="onConsignmentTypeChange" selectedItem="">
+<items>
+<SegmentedButtonItem id="cartonType" text="{i18n>Parcel}" icon="sap-icon://database"/>
+<SegmentedButtonItem id="vehicleType" text="{i18n>Vehicle}" icon="sap-icon://shipping-status"/>
+<SegmentedButtonItem id="palletType" text="{i18n>Pallet}" icon="sap-icon://grid"/>
+<SegmentedButtonItem id="fclType" text="{i18n>FullContainerLoad}" icon=""/>
+</items>
+</SegmentedButton>
+</items>
+</HBox>
+<form:SimpleForm editable="true" id="ConsignmentForm">
+<Label text="{i18n>ConsignmentType}"/>
+<Input id="ConsignmentType" value="{ModelNewOrder>/consignmentType}" enabled="false"/>
+<Label text="{i18n>ConsignmentSize}" required="true"/>
+<ComboBox xmlns="sap.m" id="ConsignmentSize" selectionChange="onConsignmentSizeChange" value="{ModelNewOrder>/consignmentSize}">
+                                    </ComboBox>
+<Label id="Labelbuy" text="{i18n>cartonDelivery}"/>
+<HBox alignItems="Center" justifyContent="Center" width="100%">
+<items>
+<ToggleButton id="CommandIcon" icon="sap-icon://cart-3" pressed="false" enabled="false" tooltip="{i18n>toCartButtonTooltip}"/>
+<Switch id="BuyPackaging" state="{ModelNewOrder>/orderSize}" change="onCartonDeliverchange">
+<layoutData>
+<FlexItemData growFactor="1"/>
+</layoutData>
+</Switch>
+</items>
+</HBox>
+<Label text="{i18n>ContentDescr}"/>
+<MultiComboBox id="ConsignmentContent" class="sapUiSmallMarginBottom"  selectionChange="onHandleSelectionChange" selectionFinish="onSelectionFinishContent" showSecondaryValues="true" maxWidth="500px" value="{ModelNewOrder>/consignmentContent}" valueState="Warning" valueStateText="{i18n>ContentDangerousMix}" items="{ path: 'ConsignmentContentData>/ConsignmentContents', sorter: { path: 'Key' } }">
+<core:ListItem key="{ConsignmentContentData>Key}" text="{ConsignmentContentData>Description}" additionalText="{ConsignmentContentData>Key}"/>
+</MultiComboBox>
+<FlexBox height="100px" alignItems="Start" justifyContent="Start">
+<CheckBox text="{i18n>TermsAndCondx}" valueState="Error" enabled="true" selected="{ModelNewOrder>/acceptTermsCond}"/>
+<Link press="onReadTermsandCond" text="{i18n>ReadTermsAndCond}"/>
+</FlexBox>
+<Button text="{i18n>AddConsignment}" type="Emphasized" icon="sap-icon://add-product" press="onAddConsignment"/>
+</form:SimpleForm>
+<layout:BlockLayout id="BlockLayout" background="Dashboard">
+<layout:BlockLayoutRow accentCells="Accent3">
+<layout:BlockLayoutCell id="Accent3">
+<Table id="ConsignmentTable" inset="false" items="{path: 'ConsignmentModel>/consignmentDetail'}" growingThreshold="4" alternateRowColors="true" growingScrollToLoad="false" growing="true" selectionChange="selectionChanged">
+<headerToolbar>
+<Toolbar design="Transparent" style="Standard">
+<Title text="{i18n>ConsignmentAdr}" level="H2"/>
+<ToolbarSpacer/>
+<Label text="{ModelNewOrder>/streetConsignment} {ModelNewOrder>/streetNrConsignment} ,{ModelNewOrder>/postCodeConsignmemt} in {ModelNewOrder>/cityConsignment}" textAlign="Left" width="300px"/>
+<ToolbarSpacer/>
+<Button id="editButton" text="{i18n>EditAdress}" type="Transparent" press="handleEditAdressPress"/>
+</Toolbar>
+</headerToolbar>
+<columns>
+<Column width="12em" demandPopin="true" minScreenWidth="Tablet">
+<ObjectIdentifier text="{i18n>ConsignmentNumber}"/>
+</Column>
+<Column width="12em" demandPopin="true" minScreenWidth="Tablet">
+<ObjectIdentifier text="{i18n>ConsignmentType}"/>
+</Column>
+<Column demandPopin="true" minScreenWidth="Tablet">
+<Text text="{i18n>ConsignmentSize}"/>
+</Column>
+<Column demandPopin="true" minScreenWidth="Tablet">
+<Text text="{i18n>BuyPackaging}"/>
+</Column>
+<Column demandPopin="true" minScreenWidth="Tablet">
+<ObjectNumber number="{i18n>ContentDescr}"/>
+</Column>
+<Column demandPopin="true" minScreenWidth="Tablet">
+<ObjectNumber number="{i18n>ActionTab}"/>
+</Column>
+</columns>
+<items>
+<ColumnListItem>
+<cells>
+<Text text="{ConsignmentModel>ConsignmentNr}"/>
+<ToggleButton id="ConsignmentTypeIcon" icon="{path:'ConsignmentModel>ConsignmentType', formatter:'.formatter.ConsignmentTypeIcon' }" pressed="false" enabled="false"/>
+<Text text="{ConsignmentModel>ConsignmentSize}"/>
+<Text text="{ConsignmentModel>BuyPackaging}"/>
+<Text text="{ConsignmentModel>ContentDescr}"/>
+
+<Button icon="sap-icon://delete" press="onDeleteConsignment" type="Reject"/>
+</cells>
+</ColumnListItem>
+</items>
+</Table>
+</layout:BlockLayoutCell>
+</layout:BlockLayoutRow>
+</layout:BlockLayout>
+</WizardStep>
+<WizardStep id="PickUP" title="{i18n>PickupInfo}" validated="true">
+<MessageStrip id="BigSizeFlexImpossible" class="sapUiSmallMarginBottom" visible="false" text="{i18n>BigSizeFlexImpossible}" showIcon="true"/>
+<Text class="sapUiSmallMarginBottom" text="The PickUp fee depends on 2 Factors.Firstly the distance between our Company and the Pick Up location. secondly the PickUp option that has been choosed"/>
+<HBox alignItems="Center" justifyContent="Center" width="100%">
+<items>
+<SegmentedButton id="PickUpOption" width="400px" selectionChange="onPickUpOptionChange" selectedItem="Dummy">
+<items>
+<SegmentedButtonItem id="PickUpOptionFlex" text="{i18n>FlexDate}" icon="sap-icon://accelerated" />
+<SegmentedButtonItem text="{i18n>TransportMyself}" icon="sap-icon://customer-and-supplier"/>
+</items>
+</SegmentedButton>
+</items>
+</HBox>
+<MessageStrip class="sapUiSmallMarginBottom" id="SelectFlexDateWarning" text="{i18n>WarningSelectFlexDate}" showIcon="true" type="Warning" visible="false"/>
+<MessageStrip class="sapUiSmallMarginBottom" id="SelectBringYourself" text="{i18n>SelectBringYourself}" showIcon="true" type="Warning" visible="false"/>
+<f:Card visible="false" id="PickUpBigConsignment">
+<f:header>
+<card:Header title="{i18n>PickUpTitle}" subtitle="We charge 0.25 cents per km" iconSrc="sap-icon://bus-public-transport" press="onPress"/>
+</f:header>
+<f:content>
+<VBox height="120px" class="sapUiSmallMargin" justifyContent="SpaceBetween">
+<items>
+<HBox justifyContent="SpaceBetween" width="550px">
+<items>
+<Input id="FromCity" width="250px" value="{ModelNewOrder>/streetConsignment} {ModelNewOrder>/streetNrConsignment} ,{ModelNewOrder>/postCodeConsignmemt} in {ModelNewOrder>/cityConsignment}" placeholder="From City"/>
+<Input id="ToCity" value="Wiesenstr 25,38259 Salzgitter" enabled="false" width="250px" placeholder="To City"/>
+</items>
+</HBox>
+<HBox justifyContent="SpaceBetween">
+<items>
+<DatePicker id="PickUpDate" width="200px" placeholder="{i18n>Pick-Up-Date}" change="OnDatePickUpChange"/>
+<Button text="{i18n>EditAdress}" type="Emphasized" press="handleEditAdressPress" width="175px" class="sapUiTinyMarginBegin"/>
+</items>
+</HBox>
+</items>
+</VBox>
+</f:content>
+</f:Card>
+<f:Card visible="false" id="bringyourself">
+<f:header>
+<card:Header title="Please bring or post your Consignment to one of these following adress" subtitle="{i18n>BringYourself}" iconSrc="sap-icon://retail-store" press="onPress"/>
+</f:header>
+<f:content>
+<List id="myList" headerText="Inverted Info State" items="{ path: 'SenderLandData>/SenderLands/1/PickUpRepresentations', factory:'.factoryFunctionLocation' }">
+<dependents>
+<core:Fragment fragmentName="GroupageNamespace.GroupageModule.view.LocationFilliale" type="XML"/>
+<core:Fragment fragmentName="GroupageNamespace.GroupageModule.view.LocationShop" type="XML"/>
+</dependents>
+</List>
+</f:content>
+</f:Card>
+<Panel id="LocationId" headerText="Locations" visible="false">
+<content>
+    <Image src="https://cdn.worldvectorlogo.com/logos/cargo-floor.svg"/>
+</content>
+</Panel>
+</WizardStep>
+<WizardStep id="PayMethod" title="{i18n>MethodOfPayement}" validated="true">
+<Text class="sapUiSmallMarginBottom" text="For low Size Consignment we offer either the Banktransfer or a Cash-Payment at a Delivery shop of your Choice. For Consignment with big size we dont offer Cash-Payment. Please tranfer the indicated Money and wait for our Pick-Up"/>
+<HBox alignItems="Center" justifyContent="Center" width="100%">
+
+<SegmentedButton width="320px" selectionChange="onPayMethodChange">
+<items>
+<SegmentedButtonItem id="CashPaymethod" text="{i18n>Cash}" icon="sap-icon://group" />
+<SegmentedButtonItem  id="TransfertPaymethod" text="{i18n>MoneyTransfer}" icon="sap-icon://money-bills"/>
+</items>
+</SegmentedButton>
+
+</HBox>
+<form:SimpleForm editable="true">
+<layout:Grid defaultSpan="L6 M6 S10" hSpacing="2">
+<Label text="{i18n>BeneficiaryName}" design="Bold"/>
+<Label text="Singapore Hardware e-Commerce LTD"/>
+<Label text="{i18n>BeneficiaryBank}" design="Bold"/>
+<Label text="CITY BANK, SINGAPORE BRANCH"/>
+<Label text="{i18n>BeneficiaryAccountNumber}" design="Bold"/>
+<Label text="06110702027218"/>
+</layout:Grid>
+</form:SimpleForm>
+</WizardStep>
+</Wizard>
+</content>
+<footer>
+<Bar>
+<contentRight>
+<Button text="Submit" press="handleWizardSubmit"/>
+<Button text="Cancel" press="handleWizardCancel"/>
+</contentRight>
+</Bar>
+</footer>
+</Page>
+</pages>
+</NavContainer>
+</App>
+</Shell>
+</mvc:View>
+

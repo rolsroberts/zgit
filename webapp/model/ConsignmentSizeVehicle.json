@@ -1,0 +1,19 @@
+{
+    "ConsignmentSizeVehicles": [
+        {
+            "Key": "Minicar",
+            "Description": "Size 90",
+            "Buyable":"false"
+        },
+        {
+            "Key": "SUV",
+            "Description": "Suv Size",
+            "Buyable":"false"
+        },
+        {
+            "Key": "Truck",
+            "Description": "Truck",
+            "Buyable":"false"
+        }
+    ]
+}

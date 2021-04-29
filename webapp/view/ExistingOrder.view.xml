@@ -1,0 +1,178 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:tnt="sap.tnt" xmlns:f="sap.ui.layout.form"
+    controllerName="GroupageNamespace.GroupageModule.controller.ExistingOrder" xmlns:html="http://www.w3.org/1999/xhtml">
+    <App id="app">
+        <pages>
+            <Page>
+            <customHeader>
+<Bar>
+<contentLeft>
+<Button icon="https://cdn.worldvectorlogo.com/logos/cargo-floor.svg" press=".onShowHome" visible="true"/>
+</contentLeft>
+<contentMiddle>
+<Button icon="sap-icon://add-product" type="Transparent" enabled="false">
+<layoutData>
+<OverflowToolbarLayoutData priority="NeverOverflow"/>
+</layoutData>
+</Button>
+<Title level="H2" tooltip="{i18n>welcomeDescription}" text="Existing Order"/>
+</contentMiddle>
+<contentRight>
+<Button text="Contact Us" enabled="false" type="Transparent" press="onSeeOurContact">
+<layoutData>
+<OverflowToolbarLayoutData priority="NeverOverflow"/>
+</layoutData>
+</Button>
+<Avatar displaySize="XS" fallbackIcon="sap-icon://call" backgroundColor="Blue" showBorder="true" displayShape="Circle" press="onSeeOurContact"/>
+</contentRight>
+</Bar>
+</customHeader>
+            
+
+                    <VBox class="sapUiSmallMargin">
+		<f:Form id="FormDisplay354wideDual"
+			editable="false">
+			<f:title>
+				<core:Title text="Account Details" />
+			</f:title>
+			<f:layout>
+				<f:ResponsiveGridLayout
+					labelSpanXL="2"
+					labelSpanL="4"
+					labelSpanM="4"
+					labelSpanS="3"
+					adjustLabelSpan="false"
+					emptySpanXL="0"
+					emptySpanL="2"
+					emptySpanM="0"
+					emptySpanS="0"
+					columnsXL="2"
+					columnsL="1"
+					columnsM="1"
+					singleContainerFullSize="false" />
+			</f:layout>
+			<f:formContainers>
+				<f:FormContainer title="Personal Information">
+					<f:formElements>
+						<f:FormElement label="Sex">
+							<f:fields>
+								<Text text="{SupplierName}" id="sex"  />
+							</f:fields>
+						</f:FormElement>
+                        <f:FormElement label="First name">
+							<f:fields>
+								<Text text="{SupplierName}" id="nameText"  />
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="Second Name">
+							<f:fields>
+								<Text text="{Street} {HouseNumber}" />
+							</f:fields>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+				<f:FormContainer title="Adress">
+					<f:formElements>
+						<f:FormElement label="Companyname">
+							<f:fields>
+								<Text text="{Companyname}" />
+							</f:fields>
+						</f:FormElement>
+                        <f:FormElement label="Street / number">
+							<f:fields>
+								<Text text="{Street} {HouseNumber}" />
+							</f:fields>
+						</f:FormElement>
+
+						<f:FormElement label="ZIP Code and City">
+							<f:fields>
+								<Text text="{ZIPCode} {City}" />
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="Country where the contact is located">
+							<f:fields>
+								<Text text="{Country}" id="countryText" />
+							</f:fields>
+						</f:FormElement>
+                        <f:FormElement label="Email-adress">
+							<f:fields>
+								<Text text="{Email}" id="email" />
+							</f:fields>
+						</f:FormElement>
+                        <f:FormElement label="Telephone">
+							<f:fields>
+								<Text text="{Telephone}" id="telephone" />
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="Whatsapp of the contact">
+							<f:fields>
+								<Text text="{whatsapp}" />
+							</f:fields>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+	</VBox>
+     
+                                    <Table items="{path: 'OrderModel>/Orders'}" id="AllOrdersTab" itemPress="onExistingOrderDetail" noDataText="No Data" growingThreshold="3" growing="true" >
+                                        <headerToolbar>
+                                            <Toolbar>
+                                                <Title level="H2" text="{i18n>AllOrder}"/>
+                                                <ToolbarSpacer/>
+                                                <Button press="onTableSettings" icon="sap-icon://drop-down-list" tooltip="Settings"/>
+                                            </Toolbar>
+                                        </headerToolbar>
+                                        <columns>
+                                            <Column width="12em">
+                                                <header>
+                                                    <Text text="{i18n>ShipmentNr}" maxLines="0"/>
+                                                </header>
+                                            </Column>
+                                            <Column width="12em">
+                                                <header>
+                                                    <Text text="{i18n>ShipmentDate}" maxLines="0"/>
+                                                </header>
+                                            </Column>
+                                            <Column width="12em" minScreenWidth="tablet" demandPopin="true">
+                                                <header>
+                                                    <Text text="{i18n>ShipmentType}" maxLines="0"/>
+                                                </header>
+                                            </Column>
+                                            <Column width="12em" minScreenWidth="tablet" demandPopin="true">
+                                                <header>
+                                                    <Text text="{i18n>Price}" maxLines="0"/>
+                                                </header>
+                                            </Column>
+                                            <Column width="12em" minScreenWidth="tablet" demandPopin="true">
+                                               <header>
+                                                     <Text text="{i18n>CreationDate}" maxLines="0"/>
+                                               </header>
+                                            </Column>
+                                        </columns>
+                                        <items>
+                                            <ColumnListItem type="Active">
+                                                <cells>
+                                                    <ObjectIdentifier title="{OrderModel>OrderNr}"/>
+                                                    <Text text="{OrderModel>DateOfShipment}"/>
+                                                    <Text text="{OrderModel>PickUpOption}"/>
+                                                    <Text text="{OrderModel>OrderPrice}"/>
+                                                    <Text text="{OrderModel>CreationDate}"/>
+                                                </cells>
+                                            </ColumnListItem>
+                                        </items>
+                                    </Table>
+                                    <footer>
+<Bar>
+<contentRight>
+
+</contentRight>
+</Bar>
+</footer>
+
+            </Page>
+        </pages>
+    </App>
+</mvc:View>
+
+
+
